@@ -93,8 +93,7 @@ function App() {
       </FormControl>
       {country && state && city && (
         <Box sx={{ m: 1, minWidth: 300 }}>
-          <p> <strong> You Selected {city},</strong>
-          {state}, {country}</p>
+          <p> You Selected {city},{state}, {country}</p>
         </Box>
       )}
     </Box>
