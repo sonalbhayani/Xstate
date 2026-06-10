@@ -1,7 +1,7 @@
 
 import {useState,useEffect} from "react";
 import axios from "axios";
-import {Box,InputLabel,MenuItem,FormControl,Select} from '@mui/material';
+import {Box,InputLabel,FormControl} from '@mui/material';
 
 function App() {
   const [countries,setCountries]=useState("");
@@ -48,60 +48,48 @@ function App() {
    
       <Box sx={{ minWidth: 120 }}>
        <FormControl variant="outlined" sx={{ m: 1, minWidth: 300 }}>
-        <InputLabel id="select-outlined-label-country">Select Country</InputLabel>
-        <Select
-          labelId="select-outlined-label-country"
-          id="select-outlined-country"
+      
+        <select
           value={country}
-          onChange={(event) => handleChange(event,'country') }
-          label="Age"
+          onChange={(e) => handleChange(e, "country")}
         >
-          {countries && countries.map((country)=>{
-            return <MenuItem  key={country} value={country}>{country}</MenuItem>
-          })}
-        
-        </Select>
+          <option value="">Select Country</option>
+          {countries?.map((country) => (
+            <option key={country} value={country}>
+              {country}
+            </option>
+          ))}
+        </select>
       </FormControl>
       <FormControl variant="outlined" sx={{ m: 1, minWidth: 300 }}>
-        <InputLabel id="select-outlined-label-state">Select State</InputLabel>
-        <Select
-          labelId="select-outlined-label-state"
-          id="select-outlined-state"
-          disabled={country?false:true}
+       
+        <select
           value={state}
-          onChange={(event) => handleChange(event, 'state') }
+          disabled={!country}
+          onChange={(e) => handleChange(e, "state")}
         >
-          {!states && (
-            <MenuItem value="">
-              <em>None</em>
-            </MenuItem>
-          )}
-          {states && states.map((state)=>{
-            console.log(state);
-            return <MenuItem  key={state} value={state}>{state}</MenuItem>
-          })}
-        </Select>
+          <option value="">Select State</option>
+          {states?.map((state) => (
+            <option key={state} value={state}>
+              {state}
+            </option>
+          ))}
+        </select>
       </FormControl>
       <FormControl variant="outlined" sx={{ m: 1, minWidth: 300 }}>
-        <InputLabel id="select-outlined-label-city">Select City</InputLabel>
-        <Select
-          labelId="select-outlined-label-city"
-          id="select-outlined-city"
-          disabled={state?false:true}
-          value={city}
-          onChange={(event) => handleChange(event, 'city') }
-         >  
-        
-          {!cities && (
-            <MenuItem value="">
-              <em>None</em>
-            </MenuItem>
-          )}
-          {cities && cities.map((city)=>{
-            console.log(city);
-            return <MenuItem  key={city} value={city}>{city}</MenuItem>
-          })}
-        </Select>
+       
+        <select
+            value={city}
+            disabled={!state}
+            onChange={(e) => handleChange(e, "city")}
+          >
+            <option value="">Select City</option>
+            {cities?.map((city) => (
+              <option key={city} value={city}>
+                {city}
+              </option>
+            ))}
+          </select>
       </FormControl>
       {country && state && city && (
         <Box sx={{ m: 1, minWidth: 300 }}>
