@@ -93,7 +93,7 @@ function App() {
       </FormControl>
       {country && state && city && (
         
-          <p> You Selected {city},{state}, {country}</p>
+          <p> You selected {city},{state}, {country}</p>
        
       )}
     </Box>
