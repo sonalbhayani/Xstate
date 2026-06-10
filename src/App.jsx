@@ -4,11 +4,11 @@ import axios from "axios";
 import {Box,InputLabel,FormControl} from '@mui/material';
 
 function App() {
-  const [countries,setCountries]=useState("");
+  const [countries,setCountries]=useState([]);
   const [country,setCountry]=useState("");
-  const [states,setStates]=useState("");
+  const [states,setStates]=useState([]);
   const [state,setState]=useState("");
-  const [cities,setCities]=useState("");
+  const [cities,setCities]=useState([]);
   const [city,setCity]=useState("");
   function getStates(country){
     axios.get(`https://location-selector.labs.crio.do/country=${country}/states`).then((res)=>{
